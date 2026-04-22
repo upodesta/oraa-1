@@ -15,7 +15,7 @@ const members = [
         facebook: "https://fb.com/*",
         messenger: "https://msg.com/**",
         twitter: "",
-        bioFile: "bios/member-01713257629.pdf",
+        bioFile: "https://oraa.hassan.bd/bios/member-01713257629.pdf",
         college: "Ananda Mohon College, Mymenshing",
         hall: "Mother Box Hall"
     },
