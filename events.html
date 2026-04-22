@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events | ORAA-85</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&family=Hind+Siliguri:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .events-hero {
+            background: linear-gradient(135deg, var(--color-terracotta) 0%, var(--color-terracotta-dark) 100%);
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            color: var(--color-white);
+        }
+        
+        .events-hero h1 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .events-hero p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .event-single {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        
+        .event-card {
+            background: var(--color-bg);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .event-photo {
+            width: 100%;
+            height: 350px;
+            background: var(--color-cream-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-charcoal-light);
+            font-size: 4rem;
+        }
+        
+        .event-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .event-details {
+            padding: 2rem;
+        }
+        
+        .event-type {
+            display: inline-block;
+            background: var(--color-terracotta);
+            color: var(--color-white);
+            padding: 0.25rem 1rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .event-name {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--color-charcoal);
+            margin-bottom: 1.5rem;
+        }
+        
+        .event-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .event-info {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--color-charcoal);
+        }
+        
+        .event-info i {
+            color: var(--color-terracotta);
+            width: 24px;
+            font-size: 1.1rem;
+        }
+        
+        .event-info span {
+            font-weight: 500;
+        }
+        
+        .event-info a {
+            color: var(--color-terracotta);
+        }
+        
+        .event-info a:hover {
+            color: var(--color-terracotta-dark);
+        }
+        
+        .event-map {
+            width: 100%;
+            height: 250px;
+            background: var(--color-cream-dark);
+            border-radius: var(--radius-md);
+            margin-top: 1.5rem;
+            overflow: hidden;
+        }
+        
+        .event-map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .event-map-label {
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            display: block;
+            color: var(--color-charcoal);
+        }
+        
+        .consent-section {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: var(--color-cream);
+            border-radius: var(--radius-md);
+        }
+        
+        .consent-section h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--color-charcoal);
+            margin-bottom: 1rem;
+        }
+        
+        .consent-iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+            border-radius: var(--radius-sm);
+        }
+        
+        [data-theme="dark"] .event-card {
+            background: var(--color-bg-alt);
+        }
+        
+        [data-theme="dark"] .event-photo {
+            background: var(--color-cream-dark);
+        }
+        
+        [data-theme="dark"] .consent-section {
+            background: var(--color-cream-dark);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo" data-en="ORAA-85" data-bn="ওআরএই-৮৫">ORAA-85</a>
+            <button class="mobile-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html#home" data-en="Home" data-bn="হোম">Home</a></li>
+                <li><a href="index.html#about" data-en="About" data-bn="সম্পর্কে">About</a></li>
+                <li><a href="index.html#portfolio" data-en="Members" data-bn="সদস্য">Members</a></li>
+                <li><a href="index.html#highlights" data-en="Highlights" data-bn="হাইলাইটস">Highlights</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="lang-toggle" id="langToggle">EN</button>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Events Hero -->
+    <section class="events-hero">
+        <h1 data-en="Upcoming Event" data-bn="আসন্ন অনুষ্ঠান">Upcoming Event</h1>
+        <p data-en="Join us for our special event. Your presence will make it memorable." data-bn="আমাদের বিশেষ অনুষ্ঠানে যোগ দিন। আপনার উপস্থিতি এটিকে স্মরণীয় করবে।">Join us for our special event. Your presence will make it memorable.</p>
+    </section>
+
+    <!-- Single Event -->
+    <section class="event-single">
+        <div class="event-card">
+            <!-- Long Image Placeholder -->
+            <div class="event-photo">
+                <!-- Placeholder for event photo - Replace with actual image -->
+                <i class="fas fa-image"></i>
+            </div>
+            
+            <div class="event-details">
+                <!-- Event Type -->
+                <span class="event-type" data-en="Wedding / Birthday" data-bn="বিয়ে / ���ন��মদিন">Wedding / Birthday</span>
+                
+                <!-- Event Name -->
+                <h2 class="event-name" data-en="[Event Name]" data-bn="[অনুষ্ঠানের নাম]">[Event Name]</h2>
+                
+                <!-- Event Info Grid -->
+                <div class="event-info-grid">
+                    <div class="event-info">
+                        <i class="fas fa-user"></i>
+                        <div>
+                            <small data-en="Organised by" data-bn="আয়োজন করেছেন">Organised by</small><br>
+                            <span>[Organiser Name]</span>
+                        </div>
+                    </div>
+                    <div class="event-info">
+                        <i class="fas fa-calendar"></i>
+                        <div>
+                            <small data-en="Date" data-bn="তারিখ">Date</small><br>
+                            <span>[Event Date]</span>
+                        </div>
+                    </div>
+                    <div class="event-info">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <small data-en="Time" data-bn="সময়">Time</small><br>
+                            <span>[Event Time]</span>
+                        </div>
+                    </div>
+                    <div class="event-info">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <small data-en="Contact" data-bn="যোগাযোগ">Contact</small><br>
+                            <a href="tel:+8801555555555">+880 1555 555555</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Location -->
+                <div class="event-info">
+                    <i class="fas fa-location-dot"></i>
+                    <div>
+                        <small data-en="Location" data-bn="স্থান">Location</small><br>
+                        <span>[Location Address]</span>
+                    </div>
+                </div>
+                
+                <!-- Google Map -->
+                <div class="event-map">
+                    <span class="event-map-label" data-en="View Location on Map" data-bn="ম্যাপে দেখুন">View Location on Map</span>
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.0!2d88.6!3d24.8!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDQ4JzAwLjAiTiA4OMKwMzYnMDAuMCJF!5e0!3m2!1sen!2sbd!4v1234567890"
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Embedded Consent Form -->
+        <div class="consent-section">
+            <h3 data-en="Consent Form" data-bn="কনসেন্ট ফর্ম">Consent Form</h3>
+            <iframe 
+                class="consent-iframe"
+                src="https://docs.google.com/forms/d/e/EXAMPLE_FORM_ID/viewform?embedded=true"
+                loading="lazy">
+            </iframe>
+            <p style="text-align: center; margin-top: 1rem;">
+                <a href="https://docs.google.com/forms" target="_blank" class="btn btn-primary" data-en="Open Form in New Tab" data-bn="নতুন ট্যাবে ফর্ম খুলুন">Open Form in New Tab</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>ORAA-85</h3>
+                    <p data-en="Old Rajshahi University Accounting Association - 1985" data-bn="রাজশাহী বিশ্ববিদ্যালয় হিসাববিজ্ঞান সমিতি - ১৯৮৫">Old Rajshahi University Accounting Association - 1985</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html#home" data-en="Home" data-bn="হোম">Home</a>
+                    <a href="index.html#about" data-en="About" data-bn="সম্পর্কে">About</a>
+                    <a href="index.html#portfolio" data-en="Members" data-bn="সদস্য">Members</a>
+                    <a href="index.html#highlights" data-en="Highlights" data-bn="হাইলাইটস">Highlights</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://facebook.com/oraa85" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://m.me/oraa85" target="_blank" aria-label="Messenger"><i class="fab fa-facebook-messenger"></i></a>
+                    <a href="https://youtube.com/@oraa85" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://instagram.com/oraa85" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-en="&copy; 2025 ORAA-85. All rights reserved." data-bn="&copy; ২০২৫ ওআরএই-৮৫। সর্বস্বত্ব সংরক্ষিত।">&copy; 2025 ORAA-85. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -138,6 +138,73 @@ h1, h2, h3, h4, h5, h6 {
     padding: var(--spacing-xl) 0;
 }
 
+/* Highlights Section */
+.highlights-section {
+    background: var(--color-bg-alt);
+}
+
+.highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.highlight-card {
+    background: var(--color-bg);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.highlight-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.highlight-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--color-terracotta), var(--color-terracotta-dark));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+}
+
+.highlight-icon i {
+    font-size: 2rem;
+    color: var(--color-white);
+}
+
+.highlight-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    color: var(--color-charcoal);
+    margin-bottom: 1rem;
+}
+
+.highlight-card p {
+    color: var(--color-charcoal-light);
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+[data-theme="dark"] .highlight-card {
+    background: var(--color-bg-alt);
+}
+
+[data-theme="dark"] .highlight-card h3 {
+    color: var(--color-charcoal);
+}
+
+[data-theme="dark"] .highlight-card p {
+    color: var(--color-charcoal-light);
+}
+
 /* Buttons */
 .btn {
     display: inline-flex;

@@ -7,7 +7,7 @@ const members = [
         designation: "",
         photo: "photos/member-01713257629.png",
         presentAddress: "154/4, west rampura, wapda road, Dhaka",
-        permanentAddress: "154/4, west rampura, wapda road, Dhaka",
+        permanentAddress: "Village: Kazirpara, Post: Baneswar, Thana: Paba, District: Rajshahi",
         workStation: "HR & Admin, mytv, mytv Bhaban, 150 Hatirjheel, Dhaka",
         mobile: "+88017132-257629",
         email: "upodesta@gmail.com",
