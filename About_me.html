@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me | ORAA-85</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&family=Hind+Siliguri:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* About Me Page Specific Styles */
+        .about-hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: calc(80px + var(--spacing-xl)) var(--spacing-md) var(--spacing-xl);
+            background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-cream-dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .about-hero-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 6px solid var(--color-terracotta);
+            box-shadow: var(--shadow-lg);
+            margin-bottom: var(--spacing-lg);
+            object-fit: cover;
+            background: linear-gradient(135deg, var(--color-terracotta), var(--color-olive));
+        }
+
+        .about-hero-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--color-brown);
+            margin-bottom: var(--spacing-sm);
+            font-style: italic;
+        }
+
+        .about-hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--color-olive);
+            font-weight: 400;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .about-hero .btn {
+            margin: var(--spacing-xs);
+        }
+
+        .about-hero-decoration {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .about-hero-decoration::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(196, 125, 94, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .about-hero-decoration::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(107, 112, 92, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .about-content {
+            padding: var(--spacing-xl) 0;
+        }
+
+        .about-section {
+            padding: var(--spacing-xl) 0;
+            border-bottom: 1px solid var(--color-cream-dark);
+        }
+
+        .about-section:last-child {
+            border-bottom: none;
+        }
+
+        .about-section-title {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--color-terracotta);
+            margin-bottom: var(--spacing-lg);
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .about-section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-terracotta), var(--color-olive));
+            margin: var(--spacing-sm) auto 0;
+            border-radius: 2px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .info-card {
+            background: var(--color-white);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-normal);
+            border: 1px solid transparent;
+        }
+
+        [data-theme="dark"] .info-card {
+            background: var(--color-bg-alt);
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--color-terracotta);
+        }
+
+        .info-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--color-terracotta);
+            margin-bottom: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .info-card p {
+            color: var(--color-charcoal);
+            line-height: 1.7;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .info-card strong {
+            color: var(--color-brown);
+            font-weight: 600;
+        }
+
+        .social-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+            justify-content: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-md) var(--spacing-lg);
+            border-radius: 50px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all var(--transition-normal);
+            min-width: 160px;
+            justify-content: center;
+        }
+
+        .social-btn i {
+            font-size: 1.25rem;
+        }
+
+        .social-btn.facebook {
+            background: #1877F2;
+            color: white;
+        }
+
+        .social-btn.twitter {
+            background: #1DA1F2;
+            color: white;
+        }
+
+        .social-btn.linkedin {
+            background: #0A66C2;
+            color: white;
+        }
+
+        .social-btn.whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+        .social-btn.messenger {
+            background: #0084FF;
+            color: white;
+        }
+
+        .social-btn.website {
+            background: var(--color-terracotta);
+            color: white;
+        }
+
+        .social-btn.blog {
+            background: var(--color-olive);
+            color: white;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            opacity: 0.9;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: var(--color-terracotta);
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: var(--spacing-lg);
+            transition: all var(--transition-fast);
+        }
+
+        .back-button:hover {
+            background: var(--color-terracotta-dark);
+            color: white;
+            transform: translateX(-5px);
+        }
+
+        [data-theme="dark"] .about-hero {
+            background: linear-gradient(135deg, var(--color-cream-dark) 0%, var(--color-bg) 100%);
+        }
+
+        @media (max-width: 768px) {
+            .about-hero-photo {
+                width: 150px;
+                height: 150px;
+            }
+
+            .about-hero-title {
+                font-size: 2rem;
+            }
+
+            .about-section-title {
+                font-size: 1.75rem;
+            }
+
+            .social-btn {
+                min-width: 140px;
+                padding: var(--spacing-sm) var(--spacing-md);
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="about-hero-decoration"></div>
+        <div class="about-hero-content">
+            <!-- Member Photo (replace with actual photo) -->
+            <img src="photos/member-01713257629.png" alt="Syed Hassan Ali (Liton)" class="about-hero-photo" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23c47d5e%22 width=%22200%22 height=%22200%22/><text x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2280%22 font-family=%22serif%22>LH</text></svg>';">
+            
+            <h1 class="about-hero-title">Syed Hassan Ali (Liton)</h1>
+            <p class="about-hero-subtitle">HR & Admin, mytv | Multimedia Professional | ORAA-85 Member</p>
+            
+            <div class="hero-buttons">
+                <a href="#personal-info" class="btn btn-primary">
+                    <i class="fas fa-user"></i> Personal Info
+                </a>
+                <a href="#family-info" class="btn btn-secondary">
+                    <i class="fas fa-users"></i> Family
+                </a>
+                <a href="#social-links" class="btn btn-primary">
+                    <i class="fas fa-share-alt"></i> Connect
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personal Information Section -->
+    <section id="personal-info" class="about-content">
+        <div class="container">
+            <div class="about-section">
+                <h2 class="about-section-title">
+                    <i class="fas fa-id-card"></i> Personal Information
+                </h2>
+                <div class="about-grid">
+                    <div class="info-card">
+                        <h3><i class="fas fa-briefcase"></i> Profession</h3>
+                        <p><strong>Current Position:</strong> HR & Admin Manager</p>
+                        <p><strong>Organization:</strong> mytv</p>
+                        <p><strong>Work Station:</strong> mytv Bhaban, 150 Hatirjheel, Dhaka</p>
+                        <p><strong>Experience:</strong> 5+ years in multimedia and journalism</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3><i class="fas fa-map-marker-alt"></i> Contact Details</h3>
+                        <p><strong>Present Address:</strong><br>154/4, west rampura,<br>wapda road, Dhaka</p>
+                        <p><strong>Mobile:</strong> +88017132-257629</p>
+                        <p><strong>Email:</strong> <a href="mailto:upodesta@gmail.com">upodesta@gmail.com</a></p>
+                    </div>
+
+                    <div class="info-card">
+                        <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                        <p><strong>College:</strong> Ananda Mohon College, Mymenshing</p>
+                        <p><strong>University:</strong> Independent University, Bangladesh (IUB)</p>
+                        <p><strong>Degree:</strong> Bachelor of Social Science<br>Major in Media and Communication<br>(Journalism), Minor in Environmental Science</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h3><i class="fas fa-university"></i> University Life</h3>
+                        <p><strong>Hall:</strong> Mother Box Hall</p>
+                        <p><strong>Batch:</strong> 1985</p>
+                        <p><strong>Department:</strong> Accounting & Information Technology</p>
+                        <p><strong>Alumni Association:</strong> ORAA-85</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Family Information Section -->
+    <section id="family-info" class="about-content" style="background: var(--color-bg-alt);">
+        <div class="container">
+            <div class="about-section">
+                <h2 class="about-section-title">
+                    <i class="fas fa-heart"></i> Family Details
+                </h2>
+                <div class="about-grid">
+                    <div class="info-card">
+                        <h3><i class="fas fa-male"></i> Father</h3>
+                        <p><strong>Name:</strong> Abdur Razzak</p>
+                        <p><strong>Details:</strong> Retired Government Officer</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3><i class="fas fa-female"></i> Mother</h3>
+                        <p><strong>Name:</strong> Shahida Parvin</p>
+                        <p><strong>Details:</strong> Homemaker</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h3><i class="fas fa-calendar-alt"></i> Personal</h3>
+                        <p><strong>Date of Birth:</strong> March 13, 1997</p>
+                        <p><strong>Religion:</strong> Islam</p>
+                        <p><strong>Marital Status:</strong> Unmarried</p>
+                        <p><strong>Blood Group:</strong> A+</p>
+                        <p><strong>Nationality:</strong> Bangladeshi</p>
+                    </div>
+
+                <div class="info-card">
+                    <h3><i class="fas fa-home"></i> Permanent Address</h3>
+                    <p>Village: Kazirpara,<br>Post: Baneswar,<br>Thana: Paba,<br>District: Rajshahi</p>
+                </div>
+                
+                <div class="info-card">
+                    <h3><i class="fas fa-ring"></i> Spouse</h3>
+                    <p><strong>Name:</strong> Not Applicable</p>
+                    <p><strong>Details:</strong> Currently Unmarried</p>
+                </div>
+                
+                <div class="info-card">
+                    <h3><i class="fas fa-child"></i> Daughter</h3>
+                    <p><strong>Name:</strong> Not Applicable</p>
+                    <p><strong>Details:</strong> No Daughter</p>
+                </div>
+                
+                <div class="info-card">
+                    <h3><i class="fas fa-child-reaching"></i> Son</h3>
+                    <p><strong>Name:</strong> Not Applicable</p>
+                    <p><strong>Details:</strong> No Son</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Social & Web Links Section -->
+    <section id="social-links" class="about-content">
+        <div class="container">
+            <div class="about-section">
+                <h2 class="about-section-title">
+                    <i class="fas fa-link"></i> Connect & Explore
+                </h2>
+                
+                <div class="social-grid">
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/88017132257629" target="_blank" class="social-btn whatsapp">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+
+                    <!-- Facebook -->
+                    <a href="https://facebook.com" target="_blank" class="social-btn facebook">
+                        <i class="fab fa-facebook-f"></i> Facebook
+                    </a>
+
+                    <!-- Messenger -->
+                    <a href="https://m.me" target="_blank" class="social-btn messenger">
+                        <i class="fab fa-facebook-messenger"></i> Messenger
+                    </a>
+
+                    <!-- Twitter/X -->
+                    <a href="https://twitter.com" target="_blank" class="social-btn twitter">
+                        <i class="fab fa-twitter"></i> Twitter
+                    </a>
+
+                    <!-- LinkedIn -->
+                    <a href="https://linkedin.com" target="_blank" class="social-btn linkedin">
+                        <i class="fab fa-linkedin-in"></i> LinkedIn
+                    </a>
+
+                    <!-- Personal Website -->
+                    <a href="#" target="_blank" class="social-btn website">
+                        <i class="fas fa-globe"></i> Personal Website
+                    </a>
+
+                    <!-- Blog -->
+                    <a href="#" target="_blank" class="social-btn blog">
+                        <i class="fas fa-blog"></i> Blog
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Contact Section -->
+    <section class="about-content" style="background: var(--color-bg-alt);">
+        <div class="container">
+            <div class="about-section">
+                <h2 class="about-section-title">
+                    <i class="fas fa-envelope"></i> Get In Touch
+                </h2>
+                <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+                    <p style="font-size: 1.1rem; margin-bottom: var(--spacing-lg);">
+                        Feel free to reach out for professional collaborations, media opportunities, or just to connect!
+                    </p>
+                    <div class="quick-contact" style="justify-content: center; display: flex; gap: var(--spacing-md); flex-wrap: wrap;">
+                        <a href="tel:+88017132257629" class="quick-btn">
+                            <i class="fas fa-phone"></i> Call Now
+                        </a>
+                        <a href="mailto:upodesta@gmail.com" class="quick-btn" style="background: var(--color-olive);">
+                            <i class="fas fa-envelope"></i> Send Email
+                        </a>
+                        <a href="https://wa.me/88017132257629" class="quick-btn whatsapp">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Syed Hassan Ali (Liton)</h3>
+                    <p>ORAA-85 Member | Multimedia Professional</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#personal-info">Personal Info</a>
+                    <a href="#family-info">Family</a>
+                    <a href="#social-links">Connect</a>
+                    <a href="index.html">Back to Members</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://m.me" target="_blank" aria-label="Messenger"><i class="fab fa-facebook-messenger"></i></a>
+                    <a href="https://wa.me/88017132257629" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="mailto:upodesta@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ORAA-85. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</body>
+</html>

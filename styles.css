@@ -771,7 +771,7 @@ h1, h2, h3, h4, h5, h6 {
     background: #1DA1F2;
 }
 
-.bio-link {
+.bio-link, .about-me-link {
     display: inline-flex;
     align-items: center;
     gap: var(--spacing-xs);
@@ -784,9 +784,10 @@ h1, h2, h3, h4, h5, h6 {
     transition: background 0.3s ease;
 }
 
-.bio-link:hover {
+.bio-link:hover, .about-me-link:hover {
     background: var(--color-olive);
 }
+
 
 .member-avatar img {
     width: 100%;

@@ -25,13 +25,13 @@
         
         .events-hero p {
             font-size: 1.1rem;
-            max-width: 600px;
+            max-width:100%;
             margin: 0 auto;
             opacity: 0.9;
         }
         
         .event-single {
-            max-width: 900px;
+            max-width: 100%;
             margin: 0 auto;
             padding: 3rem 2rem;
         }
@@ -45,7 +45,7 @@
         
         .event-photo {
             width: 100%;
-            height: 350px;
+            height: 450px;
             background: var(--color-cream-dark);
             display: flex;
             align-items: center;
@@ -206,16 +206,17 @@
         <div class="event-card">
             <!-- Long Image Placeholder -->
             <div class="event-photo">
+			<img src="photos/event.png" alt="event">
                 <!-- Placeholder for event photo - Replace with actual image -->
-                <i class="fas fa-image"></i>
+                
             </div>
             
             <div class="event-details">
                 <!-- Event Type -->
-                <span class="event-type" data-en="Wedding / Birthday" data-bn="বিয়ে / ���ন��মদিন">Wedding / Birthday</span>
+                <span class="event-type" data-en="Wedding Ceronomy" data-bn="বিয়ের অনুষ্ঠান">Wedding Ceronomy</span>
                 
                 <!-- Event Name -->
-                <h2 class="event-name" data-en="[Event Name]" data-bn="[অনুষ্ঠানের নাম]">[Event Name]</h2>
+                <h2 class="event-name" data-en="Wedding Ceronomy" data-bn="[অনুষ্ঠানের নাম]">Wedding Ceronomy</h2>
                 
                 <!-- Event Info Grid -->
                 <div class="event-info-grid">
@@ -223,21 +224,21 @@
                         <i class="fas fa-user"></i>
                         <div>
                             <small data-en="Organised by" data-bn="আয়োজন করেছেন">Organised by</small><br>
-                            <span>[Organiser Name]</span>
+                            <span> Doly</span>
                         </div>
                     </div>
                     <div class="event-info">
                         <i class="fas fa-calendar"></i>
                         <div>
                             <small data-en="Date" data-bn="তারিখ">Date</small><br>
-                            <span>[Event Date]</span>
+                            <span> 13.09.2026</span>
                         </div>
                     </div>
                     <div class="event-info">
                         <i class="fas fa-clock"></i>
                         <div>
                             <small data-en="Time" data-bn="সময়">Time</small><br>
-                            <span>[Event Time]</span>
+                            <span> 08:00 p.m.</span>
                         </div>
                     </div>
                     <div class="event-info">
@@ -254,7 +255,7 @@
                     <i class="fas fa-location-dot"></i>
                     <div>
                         <small data-en="Location" data-bn="স্থান">Location</small><br>
-                        <span>[Location Address]</span>
+                        <span> Dhanmondi, Dhaka</span>
                     </div>
                 </div>
                 
@@ -276,11 +277,12 @@
             <h3 data-en="Consent Form" data-bn="কনসেন্ট ফর্ম">Consent Form</h3>
             <iframe 
                 class="consent-iframe"
-                src="https://docs.google.com/forms/d/e/EXAMPLE_FORM_ID/viewform?embedded=true"
+				src="https://docs.google.com/forms/d/e/1FAIpQLSc0QorHs2m36vAIYVQg_6gcxabYTGWiFbsorQQNzfZyNc2EXA/viewform?embedded=true"
+                
                 loading="lazy">
             </iframe>
             <p style="text-align: center; margin-top: 1rem;">
-                <a href="https://docs.google.com/forms" target="_blank" class="btn btn-primary" data-en="Open Form in New Tab" data-bn="নতুন ট্যাবে ফর্ম খুলুন">Open Form in New Tab</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSc0QorHs2m36vAIYVQg_6gcxabYTGWiFbsorQQNzfZyNc2EXA/viewform?usp=dialog" target="_blank" class="btn btn-primary" data-en="Open Form in New Tab" data-bn="নতুন ট্যাবে ফর্ম খুলুন">Open Form in New Tab</a>
             </p>
         </div>
     </section>

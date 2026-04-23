@@ -15,7 +15,7 @@ const members = [
         facebook: "https://fb.com/*",
         messenger: "https://msg.com/**",
         twitter: "",
-        bioFile: "/bios/member-01713257629.pdf",
+        aboutMe: "About_me.html",
         college: "Ananda Mohon College, Mymenshing",
         hall: "Mother Box Hall"
     },
@@ -33,7 +33,7 @@ const members = [
         facebook: "",
         linkedin: "",
         twitter: "",
-        bioFile: "",
+        aboutMe: "",
         college: "Rajshahi College",
         hall: "Shahid Smriti Hall"
     },
@@ -51,7 +51,7 @@ const members = [
         facebook: "",
         linkedin: "",
         twitter: "",
-        bioFile: "",
+        aboutMe: "",
         college: "Rajshahi College",
         hall: "Shaheed Badruddoza Hall"
     },
@@ -1007,22 +1007,18 @@ function openMemberModal(member) {
         socialLinksContainer.appendChild(twLink);
     }
     
-    const bioSection = document.getElementById('modalBioSection');
-    const viewBioBtn = document.getElementById('modalViewBio');
+     // About Me Link
+    const aboutMeSection = document.getElementById('modalAboutMeSection');
+    const aboutMeBtn = document.getElementById('modalAboutMe');
     
-    if (member.bioFile) {
-        bioSection.style.display = 'block';
-        if (member.bioFile.endsWith('.pdf')) {
-            viewBioBtn.innerHTML = '<i class="fas fa-file-pdf"></i> ' + (currentLang === 'en' ? 'View Bio (PDF)' : 'বায়ো দেখুন (PDF)');
-            viewBioBtn.href = member.bioFile;
-            viewBioBtn.target = '_blank';
-        } else {
-            viewBioBtn.innerHTML = '<i class="fas fa-file-alt"></i> ' + (currentLang === 'en' ? 'View Bio' : 'বায়ো দেখুন');
-            viewBioBtn.href = member.bioFile;
-            viewBioBtn.target = '_blank';
-        }
+    if (member.aboutMe) {
+        aboutMeSection.style.display = 'block';
+        aboutMeBtn.innerHTML = '<i class="fas fa-globe"></i> ' + (currentLang === 'en' ? 'About Me' : 'আমার সম্পর্কে');
+        aboutMeBtn.href = member.aboutMe;
+        aboutMeBtn.target = '_blank';
+        aboutMeBtn.rel = 'noopener noreferrer';
     } else {
-        bioSection.style.display = 'none';
+        aboutMeSection.style.display = 'none';
     }
     
     memberModal.classList.add('active');
@@ -1033,6 +1029,7 @@ function closeMemberModal() {
     memberModal.classList.remove('active');
     document.body.style.overflow = '';
 }
+
 
 // Event Listeners Setup
 function setupEventListeners() {
